@@ -34,45 +34,45 @@ Understand and use essential tools
             ssh username@remote server
 
     Log in and switch users in multiuser targets
-            Switch to the user                      su - username
-            Switch to the root                      su -
+            Switch to the user                          su - username
+            Switch to the root                          su -
 
 
 
     Archive, compress, unpack, and uncompress files using tar, star, gzip, and bzip2
-            Gzip - compress                         gzip <text_file_name>
+            Gzip - compress                             gzip <text_file_name>
                  - decompress                           gunzip <gziped_file_name>
 
             Tar -create archive
-                 & compress                         tar -cvf <new_directory_name.tar> <directory_name_we_want_to_tar>
+                 & compress                             tar -cvf <new_directory_name.tar> <directory_name_we_want_to_tar>
 
-            Star -                              star -xattr -H=exustar -c -f=test.star file{1,2,3}
+            Star -                                      star -xattr -H=exustar -c -f=test.star file{1,2,3}
 
-            bzip2 -                             bzip2 -z textfile.txt
+            bzip2 -                                     bzip2 -z textfile.txt
 
 
     Create and edit text files
-            create empty file                       touch <filename>
-            editing file                            nano/vi/vim <filename>
+            create empty file                           touch <filename>
+            editing file                                nano/vi/vim <filename>
 
 
     Create, delete, copy, and move files and directories
-            create -                                mkdir <directory_name>
-            create whole parent tree                        mkdir -p <path/directory_name>
-            Copy -                                  cp <source> <destination>
-            move -                                  mv <source> <destination>
-            move with subdirectories                        mv -r <source> <destination>
-            delete -                                rm -rf <filename>
+            create -                                    mkdir <directory_name>
+            create whole parent tree                    mkdir -p <path/directory_name>
+            Copy -                                      cp <source> <destination>
+            move -                                      mv <source> <destination>
+            move with subdirectories                    mv -r <source> <destination>
+            delete -                                    rm -rf <filename>
 
     Create hard and soft links
             hard linkln                                 source <destination>
-            soft link                               ln -s <source> <destination>
+            soft link                                   ln -s <source> <destination>
 
     List, set, and change standard ugo/rwx permissions
-            change rwx                              chmod 555
-            set special permissions SUID                        chmod 4xxx / chmod u+s
-                        SGID                        chmod 2xxx / chmod g+s
-                        Sticky                      chmod 1xxx   chmod +t
+            change rwx                                  chmod 555
+            set special permissions SUID                chmod 4xxx / chmod u+s
+                        SGID                            chmod 2xxx / chmod g+s
+                        Sticky                          chmod 1xxx   chmod +t
 
     Locate, read, and use system documentation including man, info, and files in /usr/share/doc
             man  <command>
@@ -83,26 +83,26 @@ Understand and use essential tools
 --------------------------------------------------------------------------------------------------------------
 Create simple shell scripts
 
-    shebang                                     #!/bin/bash
-    execute rights                                  chmod +x hello_world.sh
-    start the script                                ./hello_world.sh
+    shebang                                             #!/bin/bash
+    execute rights                                      chmod +x hello_world.sh
+    start the script                                    ./hello_world.sh
 
-    exit codes -                                            true=0
-                                            false=everything else
+    exit codes -                                        true=0
+                                                        false=everything else
 
-    logical operators                               AND &&
-                                            OR ||
-                                            NOT !=
+    logical operators                                   AND &&
+                                                        OR ||
+                                                        NOT !=
 
-    equality operators                              </> less/greater than
-                                            <=/>= less/greater or equal to
-                                            == equal to
-                                            === equal value and same type
-                                            5===5       TRUE
-                                            5==="5"     FALSE
-                                            !== not equal value or not same type
-                                            5!==5       FALSE
-                                                                                                                            5!=="5"     TRUE
+    equality operators                                  </> less/greater than
+                                                        <=/>= less/greater or equal to
+                                                        == equal to
+                                                        === equal value and same type
+                                                        5===5       TRUE
+                                                        5==="5"     FALSE
+                                                        !== not equal value or not same type
+                                                        5!==5       FALSE
+                                                        5!=="5"     TRUE
 
 
     Conditionally execute code (use of: if, test, [], etc.)
@@ -161,15 +161,15 @@ Create simple shell scripts
 --------------------------------------------------------------------------------------------------------------
 Operate running systems
     Boot, reboot, and shut down a system normally
-                shutdown system                     shutdown now
-                schedule shutdown                   shutdown 03:00
+                shutdown system                             shutdown now
+                schedule shutdown                           shutdown 03:00
                 reboot                                      shutdown -r now / reboot now
-                cancel shutdown                     shutdown -c
+                cancel shutdown                             shutdown -c
 
     Boot systems into different targets manually
-                Get default target                  systemctl get-default
-                Switch target                       systemctl isolate multi-user.target
-                Change default target                   systemctl set-default graphical target
+                Get default target                          systemctl get-default
+                Switch target                               systemctl isolate multi-user.target
+                Change default target                       systemctl set-default graphical target
 
                 Changing target when booting OS add line “systemd.unit=multi-user.target"
 
@@ -181,22 +181,22 @@ Operate running systems
 
 
     Identify CPU/memory intensive processes and kill processes
-                List processes                      ps aux / top
-                Kill process by PID                 kill -9 *PID*
-                Kill process by name                    pkill "bash"
+                List processes                              ps aux / top
+                Kill process by PID                         kill -9 *PID*
+                Kill process by name                        pkill "bash"
 
     Adjust process scheduling
                 Temporary adjust the priority               chrt -p <process>
                 Permanently adjust the priority             vim /usr/lib/systemd/system/httpd.service
-                Change niceness value                   nice -n niceness-value [*process*]
-                Renice                          renice -n  5 -p *PID*
+                Change niceness value                       nice -n niceness-value [*process*]
+                Renice                                      renice -n  5 -p *PID*
 
 
     Manage tuning profiles
-                List all possible profiles              tuned-adm list
+                List all possible profiles                  tuned-adm list
                 Display current active profile              tuned-adm active
-                Display recommend profile               tuned-adm recommend
-                Change profile                      tuned-adm <profilename>
+                Display recommend profile                   tuned-adm recommend
+                Change profile                              tuned-adm <profilename>
 
     Locate and interpret system log files and journals
                 /etc/rsyslog.conf
@@ -215,11 +215,11 @@ Operate running systems
                 systemctl restart systemd-journald
 
     Start, stop, and check the status of network services
-                Start the service                   systemctl start httpd
-                Stop the service                    systemctl stop httpd
+                Start the service                           systemctl start httpd
+                Stop the service                            systemctl stop httpd
                 Enable and start the service                systemctl --now enable httpd
                 Disable and stop the service                systemctl --now disable httpd
-                                            systemctl status httpd
+                Display status of the service               systemctl status httpd
 
     Securely transfer files between systems
                 scp path_to_our_file username@ip_address:path_where_to_save_file
@@ -229,70 +229,70 @@ Operate running systems
 
 --------------------------------------------------------------------------------------------------------------
 Configure local storage
-                Linux                               8300 / 83
-                LVM                             8e00 / 8e
+                Linux                                       8300 / 83
+                LVM                                         8e00 / 8e
 
             -----------------------LVM----------------------------------------------
-            |File systems           /home                       |
-            |Logical volume (LV)    /dev/primary_vg/home_lv                 |
-            |Volume groups (VG)     primary_vg                  |
-            |Physical volumes       /dev/sdb1       /dev/sdb2   |
+            |File systems           /home                                           |
+            |Logical volume (LV)    /dev/primary_vg/home_lv                         |
+            |Volume groups (VG)     primary_vg                                      |
+            |Physical volumes       /dev/sdb1       /dev/sdb2                       |
             |-----------------------------------------------------------------------|
                 Partitions          /dev/sdb1       /dev/sdb2
                 Physical drives     /dev/sdb
 
 
     List, create, delete partitions on MBR and GPT disks
-                List blocks                         lsblk
-                MBR partitioning                    fdisk /dev/sd*
-                GPT partitioning                    gdisk /dev/sd*
+                List blocks                                 lsblk
+                MBR partitioning                            fdisk /dev/sd*
+                GPT partitioning                            gdisk /dev/sd*
 
 
     Create and remove physical volumes
-                Display physical volumes            pvdisplay
-                Create physical volume              pvcreate /dev/sd*
-                Remove physical volume              pvremove /dev/sd*
+                Display physical volumes                    pvdisplay
+                Create physical volume                      pvcreate /dev/sd*
+                Remove physical volume                      pvremove /dev/sd*
 
     Assign physical volumes to volume groups
-                Physical volume to volume group         vgcreate volume_group_name physical_volume_name
-                Delete volume group                 vgremove name_of_the_volume_group
-                Display volume groups               vgdisplay
+                Physical volume to volume group             vgcreate volume_group_name physical_volume_name
+                Delete volume group                         vgremove name_of_the_volume_group
+                Display volume groups                       vgdisplay
 
 
     Create and delete logical volumes
-                Create logical volume               lvcreate -n name_of_new_logical_volume -L size name_of_volume_group
-                Remove logical volume               lvremove path_to_logical_volume
-                Display logical volume              lvdisplay
+                Create logical volume                       lvcreate -n name_of_new_logical_volume -L size name_of_volume_group
+                Remove logical volume                       lvremove path_to_logical_volume
+                Display logical volume                      lvdisplay
 
     Format the logical volume
-                -                               mkfs.filesystem_name
-                -example                            mkfs.ext4 /logical_volume_name
+                -                                           mkfs.filesystem_name
+                -example                                    mkfs.ext4 /logical_volume_name
 
 
     Configure systems to mount file systems at boot by universally unique ID (UUID) or label
-                Permanently mount filesystem        vi /etc/fstab
-                Example                 /dev/sda3   /media/Backup   ntfs-3g defaults,locale=en_US.UTF-8 0   0
+                Permanently mount filesystem                vi /etc/fstab
+                Example: /dev/sda3   /media/Backup   ntfs-3g defaults,locale=en_US.UTF-8 0   0
 
                 USING UUID
-                    Get UUID of filesystems             blkid
-                    GET UIID inside of VIM              :r !blkid
+                    Get UUID of filesystems                 blkid
+                    GET UIID inside of VIM                  :r !blkid
                     To remount all of the filesytems        mount -a
                 USING LABEL
-                    FOR XFS                     xfs_admin -L LABEL path_to_logical_volume
-                    FOR ext4                    tune2fs -L
+                    FOR XFS                                 xfs_admin -L LABEL path_to_logical_volume
+                    FOR ext4                                tune2fs -L
 
 
     Add new partitions and logical volumes, and swap to a system non-destructively
                 Add a new patition
-                    Using fdisk                     fdisk /dev/sd*
-                    Using gdisk                         gdisk /dev/sd*
-                    Refresh status of disk partitions           partprobe
+                    Using fdisk                              fdisk /dev/sd*
+                    Using gdisk                              gdisk /dev/sd*
+                    Refresh status of disk partitions        partprobe
 
-                Create swap partition                   mkswap /dev/sdd*
+                Create swap partition                       mkswap /dev/sdd*
                 Add swap space to the OS                    swapon /dev/sdd*
-                Remove swap space to the OS                     swapoff /dev/sdd*
-                Check swap usage                        free -mh
-                Example                             UUID=xxx    none    swap    sw      0   0
+                Remove swap space to the OS                 swapoff /dev/sdd*
+                Check swap usage                            free -mh
+                Example: UUID=xxx    none    swap    sw      0   0
 
 --------------------------------------------------------------------------------------------------------------
 Create and configure file systems
@@ -300,7 +300,7 @@ Create and configure file systems
     Create, mount, unmount, and use vfat, ext4, and xfs file systems
                 Format the partition to vfat                    mkfs.vfat /dev/sdc*
                 Format the partition to ext4                    mkfs.ext4 /dev/sdc*
-                Format the partition to xfs                 mkfs.xfs /dev/sdc*
+                Format the partition to xfs                     mkfs.xfs /dev/sdc*
 
                 Mount the filesystem temporary                  mount /<device_name> /<directory>
                 Unmount the filesystem temporary                umount /<device_name> /<directory>
@@ -310,15 +310,16 @@ Create and configure file systems
 
     Mount and unmount network file systems using NFS
                 Server#1
-                    Start the network service           systemctl enable nfs-server --now
-                    Create directory to mount NFS           mkdir /nfs_folder
+                    Start the network service                   systemctl enable nfs-server --now
+                    Create directory to mount NFS               mkdir /nfs_folder
                     vim /etc/exports                            /nfs_folder <IP_ADDRESS>(rw,sync,no_root_squash,no_subtree_check)
-                    Apply new exports changes           exportfs -a
-                    Add the new firewall rule           firewall-cmd --add-service=nfs
+                    Apply new exports changes                   exportfs -a
+                    Add the new firewall rule                   firewall-cmd --add-service=nfs
 
                 Server#2
-                    Create directory to mount NFS           mkdir /nfs_host_folder
-                    Mount the NFS Server#1 folder           mount ip_of_nfs_server:/nfs_server_folder /nfs_host_folder
+                    Create directory to mount NFS               mkdir /nfs_host_folder
+                    Mount the NFS Server#1 folder               mount ip_of_nfs_server:/nfs_server_folder /nfs_host_folder
+
                     #For permanent mount write mount to /etc/fstab
                     IP_ADDRESS:/nfs_server_folder /nfs_host_folder  nfs      defaults    0       0
                     mount -a
@@ -326,34 +327,34 @@ Create and configure file systems
 
 
     Extend existing logical
-                Extend volume group                 vgextend volume_group_name new_disk_name
-                Reduce volume group                 vgreduce volume_group_name physical_volume
+                Extend volume group                             vgextend volume_group_name new_disk_name
+                Reduce volume group                             vgreduce volume_group_name physical_volume
 
 
     Create and configure set-GID directories for collaboration
-                Add SGID to directory               chmod g+s /group_A_dir
+                Add SGID to directory                           chmod g+s /group_A_dir
 
     Configure disk compression
-                Download VDO                        yum install vdo kmod-kvdo
-                Start/enable VDO                    systemctl enable vdo --now
-                Create VDO storage                  vdo create --name=VDO --device=/dev/sdc --vdoLogicalSize=50G
-                Format the storage                  mkfs.ext4 -E nodiscard /dev/mapper/VDO
-                List VDO storage                    vdostats --human-readable
+                Download VDO                                    yum install vdo kmod-kvdo
+                Start/enable VDO                                systemctl enable vdo --now
+                Create VDO storage                              vdo create --name=VDO --device=/dev/sdc --vdoLogicalSize=50G
+                Format the storage                              mkfs.ext4 -E nodiscard /dev/mapper/VDO
+                List VDO storage                                vdostats --human-readable
 
 
     Manage layered storage
-                Download STRATIS                yum install stratisd stratis-cli
-                Start/enable STRATIS                systemctl enable stratisd --now
-                Create a STRATIS pool               stratis pool create PoolTest /dev/sdc
-                List STRATIS pools list             stratis pool list
-                Create XFS on top of STRATIS            stratis filesystem create PoolTest FileSystemTest
-                List STRATIS filesystems            stratis filesystem list
-                List STRATIS blocks list            stratis blockdev
-                Create a snapshot               stratis filesystem snapshot my-pool my-fs my-fs-backup
+                Download STRATIS                                yum install stratisd stratis-cli
+                Start/enable STRATIS                            systemctl enable stratisd --now
+                Create a STRATIS pool                           stratis pool create PoolTest /dev/sdc
+                List STRATIS pools list                         stratis pool list
+                Create XFS on top of STRATIS                    stratis filesystem create PoolTest FileSystemTest
+                List STRATIS filesystems                        stratis filesystem list
+                List STRATIS blocks list                        stratis blockdev
+                Create a snapshot                               stratis filesystem snapshot my-pool my-fs my-fs-backup
 
 
     Diagnose and correct file permission problems
-                Display file permissions/ownerships ls -l
+                Display file permissions/ownerships             ls -l
 
                                 |------------------------------------------------|
                                 |                    Files          Directories  |
@@ -369,12 +370,12 @@ Create and configure file systems
                 |   SGID (2)         Run as group owner         Inherit dir group owner     |
                 |   Sticky bit (1)           ###                 delete only if owner        |
                 |---------------------------------------------------------------------------|
-                Change permissions/ownership        chmod/chown
-                Set SUID on file/dir                chmod 4770 file/chmod u+s dir
-                Set SGID on file/dir                chmod 2770 file/chmod g+s dir
-                Set Sticky bit on file/dir          chmod 1770 file/chmod +t dir
+                Change permissions/ownership                    chmod/chown
+                Set SUID on file/dir                            chmod 4770 file/chmod u+s dir
+                Set SGID on file/dir                            chmod 2770 file/chmod g+s dir
+                Set Sticky bit on file/dir                      chmod 1770 file/chmod +t dir
 
-                Check ACL of a file                 getfacl filename
+                Check ACL of a file                             getfacl filename
 
 --------------------------------------------------------------------------------------------------------------
 Deploy, configure, and maintain systems
@@ -579,14 +580,14 @@ Manage containers
 
 
     Run a service inside a container
-                Pull apache                             podman pull registry.access.redhat.com/rhscl/httpd-24-rhel7
-                Run an apache                           podman run --name httpd_server -dit -p 7000:8080 registry.access.redhat.com/rhscl/httpd-24-rhel
+                Pull apache                                 podman pull registry.access.redhat.com/rhscl/httpd-24-rhel7
+                Run an apache                               podman run --name httpd_server -dit -p 7000:8080 registry.access.redhat.com/rhscl/httpd-24-rhel
 
 
     Configure a container to start automatically as a systemd service
-                Create service                          podman generate systemd httpd_server2 > /etc/systemd/system/httpd.service
+                Create service                              podman generate systemd httpd_server2 > /etc/systemd/system/httpd.service
 
-                Enable the new service                  systemctl enable httpd.service --now
+                Enable the new service                      systemctl enable httpd.service --now
 
     Attach persistent storage to a container
-                Attach external storage                  podman run --name httpd_server -dit -p 7002:8080 -v ~/httpd:/var/www/html:z registry.access.redhat.com/rhscl/httpd-24-rhel
+                Attach external storage                     podman run --name httpd_server -dit -p 7002:8080 -v ~/httpd:/var/www/html:z registry.access.redhat.com/rhscl/httpd-24-rhel
