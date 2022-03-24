@@ -3,590 +3,590 @@ www.thetechcorner.org
 
 --------------------------------------------------------------------------------------------------------------
 Understand and use essential tools
-	Access a shell prompt and issue commands with correct syntax
-			man <command>
+    Access a shell prompt and issue commands with correct syntax
+            man <command>
 
-	Use input-output redirection (>, >>, |, 2>, etc.)
-	        Standart input								stin = 0 
-			Standart output							stdout =1
-			Standart error							stderr =2
-			overwrite							ls -a > text.txt
-			append								ls -a >> text.txt
-			feed info 							./script.sh < input_info.txt
-			Error redirection to stdout 					2>&1 
-	    	    	Delete STDERR							2>/dev/null
-			Using pipes							command_1 | command_2
-											ls -l | head
+    Use input-output redirection (>, >>, |, 2>, etc.)
+            Standart input                              stin = 0
+            Standart output                             stdout =1
+            Standart error                              stderr =2
+            overwrite                                   ls -a > text.txt
+            append                                      ls -a >> text.txt
+            feed info                                   ./script.sh < input_info.txt
+            Error redirection to stdout                 2>&1
+            Delete STDERR                                2>/dev/null
+            Using pipes                                 command_1 | command_2
+                                                        ls -l | head
 
-	Use grep and regular expressions to analyze text
-			Replaces any character						.
-			Mathces start of string 					^
-			Matches end of string 						&
-			Matches up 0 or more times					*
-			Matches up exactly one char    		 			?
-			Groups regular expressions 					()
-			grep apple example.txt
-			cat example.txt | grep apple
-			cat example.txt | grep ap*
-			cat example.txt | grep appl[e]
+    Use grep and regular expressions to analyze text
+            Replaces any character                      .
+            Mathces start of string                     ^
+            Matches end of string                       &
+            Matches up 0 or more times                  *
+            Matches up exactly one char                     ?
+            Groups regular expressions                  ()
+            grep apple example.txt
+            cat example.txt | grep apple
+            cat example.txt | grep ap*
+            cat example.txt | grep appl[e]
 
-	Access remote systems using SSH
-			ssh username@remote server
+    Access remote systems using SSH
+            ssh username@remote server
 
-	Log in and switch users in multiuser targets
-			Switch to the user 						su - username
-			Switch to the root 						su - 
+    Log in and switch users in multiuser targets
+            Switch to the user                      su - username
+            Switch to the root                      su -
 
 
 
-	Archive, compress, unpack, and uncompress files using tar, star, gzip, and bzip2
-			Gzip - compress 						gzip <text_file_name>
-			     - decompress          					gunzip <gziped_file_name>
-							
-			Tar	-create archive
-				 & compress 						tar -cvf <new_directory_name.tar> <directory_name_we_want_to_tar>
+    Archive, compress, unpack, and uncompress files using tar, star, gzip, and bzip2
+            Gzip - compress                         gzip <text_file_name>
+                 - decompress                           gunzip <gziped_file_name>
 
-			Star - 								star -xattr -H=exustar -c -f=test.star file{1,2,3}
+            Tar -create archive
+                 & compress                         tar -cvf <new_directory_name.tar> <directory_name_we_want_to_tar>
 
-			bzip2 -								bzip2 -z textfile.txt
+            Star -                              star -xattr -H=exustar -c -f=test.star file{1,2,3}
 
-															
-	Create and edit text files
-			create empty file 						touch <filename>
-			editing file 							nano/vi/vim <filename>
+            bzip2 -                             bzip2 -z textfile.txt
 
-	
-	Create, delete, copy, and move files and directories
-			create - 								mkdir <directory_name>
-			create whole parent tree 						mkdir -p <path/directory_name>
-			Copy -									cp <source> <destination> 
-			move -									mv <source> <destination>
-			move with subdirectories  						mv -r <source> <destination>
-			delete -								rm -rf <filename>
 
-	Create hard and soft links
-			hard linkln 								source <destination>   
-			soft link 								ln -s <source> <destination> 
+    Create and edit text files
+            create empty file                       touch <filename>
+            editing file                            nano/vi/vim <filename>
 
-	List, set, and change standard ugo/rwx permissions
-			change rwx								chmod 555
-			set special permissions SUID 						chmod 4xxx / chmod u+s
-						SGID						chmod 2xxx / chmod g+s
-						Sticky						chmod 1xxx   chmod +t
 
-	Locate, read, and use system documentation including man, info, and files in /usr/share/doc
-			man  <command>
-			info <command>
-			appropos <command>
-			ls /usr/share/doc | grep <command>
+    Create, delete, copy, and move files and directories
+            create -                                mkdir <directory_name>
+            create whole parent tree                        mkdir -p <path/directory_name>
+            Copy -                                  cp <source> <destination>
+            move -                                  mv <source> <destination>
+            move with subdirectories                        mv -r <source> <destination>
+            delete -                                rm -rf <filename>
+
+    Create hard and soft links
+            hard linkln                                 source <destination>
+            soft link                               ln -s <source> <destination>
+
+    List, set, and change standard ugo/rwx permissions
+            change rwx                              chmod 555
+            set special permissions SUID                        chmod 4xxx / chmod u+s
+                        SGID                        chmod 2xxx / chmod g+s
+                        Sticky                      chmod 1xxx   chmod +t
+
+    Locate, read, and use system documentation including man, info, and files in /usr/share/doc
+            man  <command>
+            info <command>
+            appropos <command>
+            ls /usr/share/doc | grep <command>
 
 --------------------------------------------------------------------------------------------------------------
 Create simple shell scripts
 
-	shebang										#!/bin/bash
-	execute rights									chmod +x hello_world.sh
-	start the script 								./hello_world.sh
-	
-	exit codes -                  							true=0
-											false=everything else
-	
-	logical operators								AND &&
-											OR ||
-											NOT !=
-	
-	equality operators								</> less/greater than
-											<=/>= less/greater or equal to
-											== equal to
-											=== equal value and same type			
-											5===5 		TRUE
-											5==="5"		FALSE
-											!== not equal value or not same type	
-											5!==5 		FALSE
-																															5!=="5"		TRUE
+    shebang                                     #!/bin/bash
+    execute rights                                  chmod +x hello_world.sh
+    start the script                                ./hello_world.sh
+
+    exit codes -                                            true=0
+                                            false=everything else
+
+    logical operators                               AND &&
+                                            OR ||
+                                            NOT !=
+
+    equality operators                              </> less/greater than
+                                            <=/>= less/greater or equal to
+                                            == equal to
+                                            === equal value and same type
+                                            5===5       TRUE
+                                            5==="5"     FALSE
+                                            !== not equal value or not same type
+                                            5!==5       FALSE
+                                                                                                                            5!=="5"     TRUE
 
 
-	Conditionally execute code (use of: if, test, [], etc.)				
+    Conditionally execute code (use of: if, test, [], etc.)
 
-			if [ "dragon" == "cat" ]
-				then
-						echo "True statement"
-				else	
-						echo "False statement"
-			fi
-			
-			test "dragon" == "dragon"
-			echo $?
-			0
+            if [ "dragon" == "cat" ]
+                then
+                        echo "True statement"
+                else
+                        echo "False statement"
+            fi
 
-	Use Looping constructs (for, etc.) to process file, command line input
-			for i in server{1..3}
-			do
-				echo "server ${s}: $(ssh username@${i} uptime)"
-			done
+            test "dragon" == "dragon"
+            echo $?
+            0
 
-			COUNTER=0
-			while [ $COUNTER -lt 5]
-			do
-				echo "The counter is $COUNTER"
-				((COUNTER++))
-			done
+    Use Looping constructs (for, etc.) to process file, command line input
+            for i in server{1..3}
+            do
+                echo "server ${s}: $(ssh username@${i} uptime)"
+            done
 
-	Process script inputs ($1, $2, etc.)
-			$0 = argument that returns the name of the file it’s being executed in
-			$1 = first argument
-			$2 = second argument
-			$# = special variable in bash, that display to the number of used arguments
+            COUNTER=0
+            while [ $COUNTER -lt 5]
+            do
+                echo "The counter is $COUNTER"
+                ((COUNTER++))
+            done
 
-	Processing output of shell commands within a script
-			for i in $(find . -size +100M)
-			do
-				echo "Deleting file $i"
-				rm -rf $i
-			done
+    Process script inputs ($1, $2, etc.)
+            $0 = argument that returns the name of the file it’s being executed in
+            $1 = first argument
+            $2 = second argument
+            $# = special variable in bash, that display to the number of used arguments
 
-	Processing shell command exit codes
-			if [ -d "/tmp/test" ]
-				then
-						echo "Directory doesnt exists, no changes will be made"
-						exit
-				else
-						mkdir /tmp/tet 2>> /dev/null
+    Processing output of shell commands within a script
+            for i in $(find . -size +100M)
+            do
+                echo "Deleting file $i"
+                rm -rf $i
+            done
 
-			if [$? -eq 0 ]
-				then
-						echo "Directory was created"
-				else
-						echo "Directory wasnt created"
+    Processing shell command exit codes
+            if [ -d "/tmp/test" ]
+                then
+                        echo "Directory doesnt exists, no changes will be made"
+                        exit
+                else
+                        mkdir /tmp/tet 2>> /dev/null
+
+            if [$? -eq 0 ]
+                then
+                        echo "Directory was created"
+                else
+                        echo "Directory wasnt created"
 
 --------------------------------------------------------------------------------------------------------------
 Operate running systems
-	Boot, reboot, and shut down a system normally
-				shutdown system 					shutdown now
-				schedule shutdown 					shutdown 03:00 
-				reboot                      				shutdown -r now / reboot now
-				cancel shutdown						shutdown -c
+    Boot, reboot, and shut down a system normally
+                shutdown system                     shutdown now
+                schedule shutdown                   shutdown 03:00
+                reboot                                      shutdown -r now / reboot now
+                cancel shutdown                     shutdown -c
 
-	Boot systems into different targets manually
-				Get default target 					systemctl get-default
-				Switch target 						systemctl isolate multi-user.target
-				Change default target 					systemctl set-default graphical target
+    Boot systems into different targets manually
+                Get default target                  systemctl get-default
+                Switch target                       systemctl isolate multi-user.target
+                Change default target                   systemctl set-default graphical target
 
-				Changing target when booting OS add line “systemd.unit=multi-user.target"
+                Changing target when booting OS add line “systemd.unit=multi-user.target"
 
-	Interrupt the boot process in order to gain access to a system
-				reboot OS > press e in GRUB menu
-				input "rd.break" line at the end of the "Linux line"
-				input enforcing=0 after "rd.break" for setting SELinux to permissive state
-
-
-
-	Identify CPU/memory intensive processes and kill processes
-				List processes						ps aux / top
-				Kill process by PID					kill -9 *PID*
-				Kill process by name  					pkill "bash"	
-
-	Adjust process scheduling
-				Temporary adjust the priority 				chrt -p <process>
-				Permanently adjust the priority				vim /usr/lib/systemd/system/httpd.service
-				Change niceness value					nice -n niceness-value [*process*] 
-				Renice							renice -n  5 -p *PID*
+    Interrupt the boot process in order to gain access to a system
+                reboot OS > press e in GRUB menu
+                input "rd.break" line at the end of the "Linux line"
+                input enforcing=0 after "rd.break" for setting SELinux to permissive state
 
 
-	Manage tuning profiles
-				List all possible profiles				tuned-adm list
-				Display current active profile 				tuned-adm active
-				Display recommend profile 				tuned-adm recommend
-				Change profile 						tuned-adm <profilename>
 
-	Locate and interpret system log files and journals
-				/etc/rsyslog.conf
-				/var/log/messages 
-				/var/log/cron
-				/var/log/secure
-				/var/log/audit/
-				journalctl 
-				journalctl --since 10:00
-				journalctl --unit httpd
+    Identify CPU/memory intensive processes and kill processes
+                List processes                      ps aux / top
+                Kill process by PID                 kill -9 *PID*
+                Kill process by name                    pkill "bash"
+
+    Adjust process scheduling
+                Temporary adjust the priority               chrt -p <process>
+                Permanently adjust the priority             vim /usr/lib/systemd/system/httpd.service
+                Change niceness value                   nice -n niceness-value [*process*]
+                Renice                          renice -n  5 -p *PID*
 
 
-	Preserve system journals
-				vim /etc/systemd/journald.conf
-				mkdir /var/log/journal
-				systemctl restart systemd-journald
+    Manage tuning profiles
+                List all possible profiles              tuned-adm list
+                Display current active profile              tuned-adm active
+                Display recommend profile               tuned-adm recommend
+                Change profile                      tuned-adm <profilename>
 
-	Start, stop, and check the status of network services
-				Start the service					systemctl start httpd
-				Stop the service					systemctl stop httpd
-				Enable and start the service				systemctl --now enable httpd
-				Disable and stop the service				systemctl --now disable httpd
-											systemctl status httpd
+    Locate and interpret system log files and journals
+                /etc/rsyslog.conf
+                /var/log/messages
+                /var/log/cron
+                /var/log/secure
+                /var/log/audit/
+                journalctl
+                journalctl --since 10:00
+                journalctl --unit httpd
 
-	Securely transfer files between systems
-				scp path_to_our_file username@ip_address:path_where_to_save_file
-				scp /tmp/testfile.txt thetechcorner@192.168.0.194:~
-				rsync filename username@ip_address:destination_folder
-				sftp username@ip_address
+
+    Preserve system journals
+                vim /etc/systemd/journald.conf
+                mkdir /var/log/journal
+                systemctl restart systemd-journald
+
+    Start, stop, and check the status of network services
+                Start the service                   systemctl start httpd
+                Stop the service                    systemctl stop httpd
+                Enable and start the service                systemctl --now enable httpd
+                Disable and stop the service                systemctl --now disable httpd
+                                            systemctl status httpd
+
+    Securely transfer files between systems
+                scp path_to_our_file username@ip_address:path_where_to_save_file
+                scp /tmp/testfile.txt thetechcorner@192.168.0.194:~
+                rsync filename username@ip_address:destination_folder
+                sftp username@ip_address
 
 --------------------------------------------------------------------------------------------------------------
 Configure local storage
-				Linux								8300 / 83
-				LVM								8e00 / 8e
+                Linux                               8300 / 83
+                LVM                             8e00 / 8e
 
-			-----------------------LVM----------------------------------------------
-			|File systems			/home 		     			|
-			|Logical volume (LV)	/dev/primary_vg/home_lv	    			|
-			|Volume groups (VG)		primary_vg	     			|
-			|Physical volumes 		/dev/sdb1 		/dev/sdb2  	|  
-		   	|-----------------------------------------------------------------------|
-		    	Partitions 			/dev/sdb1		/dev/sdb2
-		        Physical drives		/dev/sdb
-
-
-	List, create, delete partitions on MBR and GPT disks
-				List blocks							lsblk 
-				MBR partitioning					fdisk /dev/sd*
-				GPT partitioning					gdisk /dev/sd*
+            -----------------------LVM----------------------------------------------
+            |File systems           /home                       |
+            |Logical volume (LV)    /dev/primary_vg/home_lv                 |
+            |Volume groups (VG)     primary_vg                  |
+            |Physical volumes       /dev/sdb1       /dev/sdb2   |
+            |-----------------------------------------------------------------------|
+                Partitions          /dev/sdb1       /dev/sdb2
+                Physical drives     /dev/sdb
 
 
-	Create and remove physical volumes
-				Display physical volumes 			pvdisplay
-				Create physical volume 				pvcreate /dev/sd*
-				Remove physical volume 				pvremove /dev/sd*
-				
-	Assign physical volumes to volume groups
-				Physical volume to volume group 		vgcreate volume_group_name physical_volume_name
-				Delete volume group 				vgremove name_of_the_volume_group
-				Display volume groups				vgdisplay
-				
-
-	Create and delete logical volumes
-				Create logical volume 				lvcreate -n name_of_new_logical_volume -L size name_of_volume_group
-				Remove logical volume 				lvremove path_to_logical_volume
-				Display logical volume				lvdisplay 
-
-	Format the logical volume 
-				-								mkfs.filesystem_name
-				-example							mkfs.ext4 /logical_volume_name
+    List, create, delete partitions on MBR and GPT disks
+                List blocks                         lsblk
+                MBR partitioning                    fdisk /dev/sd*
+                GPT partitioning                    gdisk /dev/sd*
 
 
-	Configure systems to mount file systems at boot by universally unique ID (UUID) or label
-				Permanently mount filesystem 		vi /etc/fstab
-				Example 				/dev/sda3	/media/Backup	ntfs-3g	defaults,locale=en_US.UTF-8	0	0
+    Create and remove physical volumes
+                Display physical volumes            pvdisplay
+                Create physical volume              pvcreate /dev/sd*
+                Remove physical volume              pvremove /dev/sd*
 
-				USING UUID
-					Get UUID of filesystems 			blkid
-					GET UIID inside of VIM 				:r !blkid
-					To remount all of the filesytems 		mount -a 
-				USING LABEL
-					FOR XFS						xfs_admin -L LABEL path_to_logical_volume
-					FOR ext4 					tune2fs -L
+    Assign physical volumes to volume groups
+                Physical volume to volume group         vgcreate volume_group_name physical_volume_name
+                Delete volume group                 vgremove name_of_the_volume_group
+                Display volume groups               vgdisplay
 
 
-	Add new partitions and logical volumes, and swap to a system non-destructively
-				Add a new patition 
-					Using fdisk						fdisk /dev/sd*
-					Using gdisk 						gdisk /dev/sd*
-					Refresh status of disk partitions 			partprobe
+    Create and delete logical volumes
+                Create logical volume               lvcreate -n name_of_new_logical_volume -L size name_of_volume_group
+                Remove logical volume               lvremove path_to_logical_volume
+                Display logical volume              lvdisplay
 
-				Create swap	partition 					mkswap /dev/sdd*
-				Add swap space to the OS 					swapon /dev/sdd*
-				Remove swap space to the OS 					swapoff /dev/sdd*
-				Check swap usage 						free -mh
-				Example 							UUID=xxx    none    swap    sw      0   0
+    Format the logical volume
+                -                               mkfs.filesystem_name
+                -example                            mkfs.ext4 /logical_volume_name
+
+
+    Configure systems to mount file systems at boot by universally unique ID (UUID) or label
+                Permanently mount filesystem        vi /etc/fstab
+                Example                 /dev/sda3   /media/Backup   ntfs-3g defaults,locale=en_US.UTF-8 0   0
+
+                USING UUID
+                    Get UUID of filesystems             blkid
+                    GET UIID inside of VIM              :r !blkid
+                    To remount all of the filesytems        mount -a
+                USING LABEL
+                    FOR XFS                     xfs_admin -L LABEL path_to_logical_volume
+                    FOR ext4                    tune2fs -L
+
+
+    Add new partitions and logical volumes, and swap to a system non-destructively
+                Add a new patition
+                    Using fdisk                     fdisk /dev/sd*
+                    Using gdisk                         gdisk /dev/sd*
+                    Refresh status of disk partitions           partprobe
+
+                Create swap partition                   mkswap /dev/sdd*
+                Add swap space to the OS                    swapon /dev/sdd*
+                Remove swap space to the OS                     swapoff /dev/sdd*
+                Check swap usage                        free -mh
+                Example                             UUID=xxx    none    swap    sw      0   0
 
 --------------------------------------------------------------------------------------------------------------
 Create and configure file systems
 
-	Create, mount, unmount, and use vfat, ext4, and xfs file systems
-				Format the partition to vfat					mkfs.vfat /dev/sdc*
-				Format the partition to ext4					mkfs.ext4 /dev/sdc*
-				Format the partition to xfs					mkfs.xfs /dev/sdc*
+    Create, mount, unmount, and use vfat, ext4, and xfs file systems
+                Format the partition to vfat                    mkfs.vfat /dev/sdc*
+                Format the partition to ext4                    mkfs.ext4 /dev/sdc*
+                Format the partition to xfs                 mkfs.xfs /dev/sdc*
 
-				Mount the filesystem temporary 					mount /<device_name> /<directory>
-				Unmount the filesystem temporary 				umount /<device_name> /<directory>
+                Mount the filesystem temporary                  mount /<device_name> /<directory>
+                Unmount the filesystem temporary                umount /<device_name> /<directory>
 
-				#For permanent mount write mount to /etc/fstab
-	
-
-	Mount and unmount network file systems using NFS
-				Server#1
-					Start the network service 			systemctl enable nfs-server --now
-					Create directory to mount NFS 			mkdir /nfs_folder
-					vim /etc/exports                        	/nfs_folder <IP_ADDRESS>(rw,sync,no_root_squash,no_subtree_check)
-					Apply new exports changes 			exportfs -a
-					Add the new firewall rule 			firewall-cmd --add-service=nfs 
-
-				Server#2
-					Create directory to mount NFS			mkdir /nfs_host_folder
-					Mount the NFS Server#1 folder 			mount ip_of_nfs_server:/nfs_server_folder /nfs_host_folder
-					#For permanent mount write mount to /etc/fstab
-					IP_ADDRESS:/nfs_server_folder /nfs_host_folder  nfs      defaults    0       0
-					mount -a  
+                #For permanent mount write mount to /etc/fstab
 
 
+    Mount and unmount network file systems using NFS
+                Server#1
+                    Start the network service           systemctl enable nfs-server --now
+                    Create directory to mount NFS           mkdir /nfs_folder
+                    vim /etc/exports                            /nfs_folder <IP_ADDRESS>(rw,sync,no_root_squash,no_subtree_check)
+                    Apply new exports changes           exportfs -a
+                    Add the new firewall rule           firewall-cmd --add-service=nfs
 
-	Extend existing logical 
-				Extend volume group 				vgextend volume_group_name new_disk_name
-				Reduce volume group 				vgreduce volume_group_name physical_volume
-
-
-	Create and configure set-GID directories for collaboration
-				Add SGID to directory 				chmod g+s /group_A_dir
-
-	Configure disk compression
-				Download VDO						yum install vdo kmod-kvdo
-				Start/enable VDO 					systemctl enable vdo --now
-				Create VDO storage 					vdo create --name=VDO --device=/dev/sdc --vdoLogicalSize=50G
-				Format the storage 					mkfs.ext4 -E nodiscard /dev/mapper/VDO
-				List VDO storage 					vdostats --human-readable
-
-						
-	Manage layered storage
-				Download STRATIS 				yum install stratisd stratis-cli
-				Start/enable STRATIS 				systemctl enable stratisd --now
-				Create a STRATIS pool 				stratis pool create PoolTest /dev/sdc
-				List STRATIS pools list 			stratis pool list
-				Create XFS on top of STRATIS 			stratis filesystem create PoolTest FileSystemTest
-				List STRATIS filesystems 			stratis filesystem list
-				List STRATIS blocks list 			stratis blockdev
-				Create a snapshot 	 			stratis filesystem snapshot my-pool my-fs my-fs-backup
+                Server#2
+                    Create directory to mount NFS           mkdir /nfs_host_folder
+                    Mount the NFS Server#1 folder           mount ip_of_nfs_server:/nfs_server_folder /nfs_host_folder
+                    #For permanent mount write mount to /etc/fstab
+                    IP_ADDRESS:/nfs_server_folder /nfs_host_folder  nfs      defaults    0       0
+                    mount -a
 
 
-	Diagnose and correct file permission problems
-				Display file permissions/ownerships ls -l
 
-	          					|------------------------------------------------|
-								|					 Files 			Directories  |
-								|	Read (4)		 Read 				###      |
-								|	Write (2)  		 modify 		delete/clear |
-								|	Execute (1)       ### 				cd,ls    |
-								|------------------------------------------------|
+    Extend existing logical
+                Extend volume group                 vgextend volume_group_name new_disk_name
+                Reduce volume group                 vgreduce volume_group_name physical_volume
 
 
-	          	|---------------------------------------------------------------------------|
-				|					      Files 				      Directories  			|
-				|	SUID (4)		    Run as owner 				      ###      	        |
-				|	SGID (2)  		 Run as group owner 		Inherit dir group owner 	|
-				|	Sticky bit (1)           ### 			     delete only if owner   	 |
-				|---------------------------------------------------------------------------|
-				Change permissions/ownership 		chmod/chown
-				Set SUID on file/dir 				chmod 4770 file/chmod u+s dir
-				Set SGID on file/dir 				chmod 2770 file/chmod g+s dir
-				Set Sticky bit on file/dir 			chmod 1770 file/chmod +t dir
-				
-				Check ACL of a file 				getfacl filename
+    Create and configure set-GID directories for collaboration
+                Add SGID to directory               chmod g+s /group_A_dir
+
+    Configure disk compression
+                Download VDO                        yum install vdo kmod-kvdo
+                Start/enable VDO                    systemctl enable vdo --now
+                Create VDO storage                  vdo create --name=VDO --device=/dev/sdc --vdoLogicalSize=50G
+                Format the storage                  mkfs.ext4 -E nodiscard /dev/mapper/VDO
+                List VDO storage                    vdostats --human-readable
+
+
+    Manage layered storage
+                Download STRATIS                yum install stratisd stratis-cli
+                Start/enable STRATIS                systemctl enable stratisd --now
+                Create a STRATIS pool               stratis pool create PoolTest /dev/sdc
+                List STRATIS pools list             stratis pool list
+                Create XFS on top of STRATIS            stratis filesystem create PoolTest FileSystemTest
+                List STRATIS filesystems            stratis filesystem list
+                List STRATIS blocks list            stratis blockdev
+                Create a snapshot               stratis filesystem snapshot my-pool my-fs my-fs-backup
+
+
+    Diagnose and correct file permission problems
+                Display file permissions/ownerships ls -l
+
+                                |------------------------------------------------|
+                                |                    Files          Directories  |
+                                |   Read (4)         Read               ###      |
+                                |   Write (2)        modify         delete/clear |
+                                |   Execute (1)       ###               cd,ls    |
+                                |------------------------------------------------|
+
+
+                |---------------------------------------------------------------------------|
+                |                         Files                       Directories           |
+                |   SUID (4)            Run as owner                      ###               |
+                |   SGID (2)         Run as group owner         Inherit dir group owner     |
+                |   Sticky bit (1)           ###                 delete only if owner        |
+                |---------------------------------------------------------------------------|
+                Change permissions/ownership        chmod/chown
+                Set SUID on file/dir                chmod 4770 file/chmod u+s dir
+                Set SGID on file/dir                chmod 2770 file/chmod g+s dir
+                Set Sticky bit on file/dir          chmod 1770 file/chmod +t dir
+
+                Check ACL of a file                 getfacl filename
 
 --------------------------------------------------------------------------------------------------------------
 Deploy, configure, and maintain systems
-	Schedule tasks using at and cron
-				Start an at job 					at now+5minutes
-													echo "Hello there. General Kenobi!" > /tmp/r2d2.txt
-			    List at job list 					atq
+    Schedule tasks using at and cron
+                Start an at job                     at now+5minutes
+                                                    echo "Hello there. General Kenobi!" > /tmp/r2d2.txt
+                List at job list                    atq
 
-									* * * * *  [UserName] Command_to_execute
-					- – – – -
-					| | | | |
-					| | | | +—– Day of week (0–7) (Sunday=0 or 7) or Sun, Mon, Tue,…
-					| | | +———- Month (1–12) or Jan, Feb,…
-					| | +————-— Day of month (1–31)
-					| +——————– Hour (0–23)
-					+————————- Minute (0–59)
-				
-				Add a new line to crontab 			crontab -e
-				0 13 6 12 *   echo "Hello there. General Kenobi!" > /tmp/r2d2.txt 
-				List crontab q						crontab -l
+                                    * * * * *  [UserName] Command_to_execute
+                    - – – – -
+                    | | | | |
+                    | | | | +—– Day of week (0–7) (Sunday=0 or 7) or Sun, Mon, Tue,…
+                    | | | +———- Month (1–12) or Jan, Feb,…
+                    | | +————-— Day of month (1–31)
+                    | +——————– Hour (0–23)
+                    +————————- Minute (0–59)
 
-	Start and stop services and configure services to start automatically at boot
-				Start a service 					systemctl start httpd
-				Stop a service 						systemctl stop httpd
-				Enable a service					systemctl enable httpd
-				Disable a service 					systemctl disable httpd
-				Combination of start and enable 	systemctl enable httpd --now
+                Add a new line to crontab           crontab -e
+                0 13 6 12 *   echo "Hello there. General Kenobi!" > /tmp/r2d2.txt
+                List crontab q                      crontab -l
 
-	Configure systems to boot into a specific target automatically
-				Display a default system target 	systemctl get-default
-				Change a default system target 		systemctl set-default graphical target
-				Switch to different target 			sudo systemctl isolate multi-user.target
+    Start and stop services and configure services to start automatically at boot
+                Start a service                     systemctl start httpd
+                Stop a service                      systemctl stop httpd
+                Enable a service                    systemctl enable httpd
+                Disable a service                   systemctl disable httpd
+                Combination of start and enable     systemctl enable httpd --now
 
-	Configure time service clients
-				Download chronyc 					yum install chrony
-				Start/enable the service 			systemctl enable chronyd --now
-				Check chronyc sources 				chronyc sources
-				Edit the config file 				sudo vi /etc/chrony.conf
-				Restart chrony 						systemctl restart chronyd
+    Configure systems to boot into a specific target automatically
+                Display a default system target     systemctl get-default
+                Change a default system target      systemctl set-default graphical target
+                Switch to different target          sudo systemctl isolate multi-user.target
 
-				Add a firewall rule 				firewall-cmd --permanent --add-service=ntp --permanent
-													firewall-cmd --reload
+    Configure time service clients
+                Download chronyc                    yum install chrony
+                Start/enable the service            systemctl enable chronyd --now
+                Check chronyc sources               chronyc sources
+                Edit the config file                sudo vi /etc/chrony.conf
+                Restart chrony                      systemctl restart chronyd
 
-				Display current time/date 			timedatectl
-				Set a new timezone 					timedatectl set-timezone *name_of_time_zone*
-				Set a timezone utility 				tzselect
+                Add a firewall rule                 firewall-cmd --permanent --add-service=ntp --permanent
+                                                    firewall-cmd --reload
 
-	Install and update software packages from Red Hat Network, a remote repository, or from the local file system
-				Search for a package 				dnf search *package*
-				Search for a package 				dnf list *part_of_the_package_name*
-				Display info about the package 		dnf info *package*
-				Install the package 				dnf install *package*
-				Remove the package 					dnf remove *package*
-				List enabled/disabled repos 		dnf repolist all
-				List currently using repos 			dnf repoinfo
-				Installing a local package 			dnf localinstall *package*
-				List all available package groups 	dnf groups list
-				Check the content of package group  dnf group info "package_group_name*
-				Install a package group 			dnf group install "System Tools" 
+                Display current time/date           timedatectl
+                Set a new timezone                  timedatectl set-timezone *name_of_time_zone*
+                Set a timezone utility              tzselect
 
-		
-	Work with package module streams
-				List all available modules 			dnf module list
-				List streams for specific module    dnf module list *modulename*
-				Switch the module stream 			dnf module install perl:5.24
-				Reset swith module stream change	dnf module reset perl
-				Change the module install level 	dnf module install httpd/minimal
+    Install and update software packages from Red Hat Network, a remote repository, or from the local file system
+                Search for a package                dnf search *package*
+                Search for a package                dnf list *part_of_the_package_name*
+                Display info about the package      dnf info *package*
+                Install the package                 dnf install *package*
+                Remove the package                  dnf remove *package*
+                List enabled/disabled repos         dnf repolist all
+                List currently using repos          dnf repoinfo
+                Installing a local package          dnf localinstall *package*
+                List all available package groups   dnf groups list
+                Check the content of package group  dnf group info "package_group_name*
+                Install a package group             dnf group install "System Tools"
 
 
-	Modify the system bootloader
-				Display default kernel version 		grubby --default-kernel 
-				Display information about kernel 	grubby --info=DEFAULT
-				Change the default kernel 			grubby --set-default-index=1
-				Remove quiet arg from bootloader 	grubby --remove-args=quiet --update-kernel=DEFAULT
-				
-				Interupt the bootloader  			#press e in bootloader
-													#use "the end linux line as orientation point"
+    Work with package module streams
+                List all available modules          dnf module list
+                List streams for specific module    dnf module list *modulename*
+                Switch the module stream            dnf module install perl:5.24
+                Reset swith module stream change    dnf module reset perl
+                Change the module install level     dnf module install httpd/minimal
+
+
+    Modify the system bootloader
+                Display default kernel version      grubby --default-kernel
+                Display information about kernel    grubby --info=DEFAULT
+                Change the default kernel           grubby --set-default-index=1
+                Remove quiet arg from bootloader    grubby --remove-args=quiet --update-kernel=DEFAULT
+
+                Interupt the bootloader             #press e in bootloader
+                                                    #use "the end linux line as orientation point"
 --------------------------------------------------------------------------------------------------------------
-Manage basic networking		
-	Configure IPv4 and IPv6 addresses
-				Configure IP's with nmtui			nmtui
-				Configure IP's with config file 	vi /etc/sysconfig/network-scripts/ifcfg-*
+Manage basic networking
+    Configure IPv4 and IPv6 addresses
+                Configure IP's with nmtui           nmtui
+                Configure IP's with config file     vi /etc/sysconfig/network-scripts/ifcfg-*
 
-	Configure hostname resolution
-				Configure DNS resolution 			nmutui
+    Configure hostname resolution
+                Configure DNS resolution            nmutui
 
-	Configure network services to start automatically at boot
-				Start/enable the service 			systemctl --now enable httpd
+    Configure network services to start automatically at boot
+                Start/enable the service            systemctl --now enable httpd
 
-	Restrict network access using firewall-cmd/firewall
-				Get active zone 					firewall-cmd --get-active-zone
-				Get default zone 					firewall-cmd --get-default-zone
-				Display info about zone 			firewall-cmd --list-all --zone=public
-				Add/remove service from zone 		firewall-cmd --add/remove-service=nfs --pernament
-				Apply change/reload 				firewall-cmd --reload
-				Change active zone 					firewall-cmd --change-interface=*inteface_name* --zone=home
-				Change default zone 				firewall-cmd --set-default-zone=home
+    Restrict network access using firewall-cmd/firewall
+                Get active zone                     firewall-cmd --get-active-zone
+                Get default zone                    firewall-cmd --get-default-zone
+                Display info about zone             firewall-cmd --list-all --zone=public
+                Add/remove service from zone        firewall-cmd --add/remove-service=nfs --pernament
+                Apply change/reload                 firewall-cmd --reload
+                Change active zone                  firewall-cmd --change-interface=*inteface_name* --zone=home
+                Change default zone                 firewall-cmd --set-default-zone=home
 
 --------------------------------------------------------------------------------------------------------------
 Manage users and groups
-	Create, delete, and modify local user accounts
-				Create/delete user 					useadd/userdel test1
-				Delete user with his home dir 		userdel -r test1
-				Modify user comment 				usermod -c "Comment" username
-				Add/change user home dir 			usermod -d /path/to/homedirectory username
-				Add user to a group 				usermod -aG wheel username
+    Create, delete, and modify local user accounts
+                Create/delete user                  useadd/userdel test1
+                Delete user with his home dir       userdel -r test1
+                Modify user comment                 usermod -c "Comment" username
+                Add/change user home dir            usermod -d /path/to/homedirectory username
+                Add user to a group                 usermod -aG wheel username
 
-	Change passwords and adjust password aging for local user accounts
-				Display user password info 					chage -l username
-				Change the user password 					passwd username
-				Set max days of valid password 				chage -M 90 username
-				Set min days of valid password 				chage -m 30 username 
-				Force user to immediately change password 	chage -d 0 username
-				Set the expiration date 					chage -E EXPIRE_DATE username
+    Change passwords and adjust password aging for local user accounts
+                Display user password info                  chage -l username
+                Change the user password                    passwd username
+                Set max days of valid password              chage -M 90 username
+                Set min days of valid password              chage -m 30 username
+                Force user to immediately change password   chage -d 0 username
+                Set the expiration date                     chage -E EXPIRE_DATE username
 
-	Create, delete, and modify local groups and group memberships
-				List groups information 					cat /etc/group
-				Create/remove a group 						groupadd/groupdel group_name
-				Add user to a group 						usermod -aG wheel username
-				Remove user grom a group 					usermod -dG username groupname
+    Create, delete, and modify local groups and group memberships
+                List groups information                     cat /etc/group
+                Create/remove a group                       groupadd/groupdel group_name
+                Add user to a group                         usermod -aG wheel username
+                Remove user grom a group                    usermod -dG username groupname
 
-	Configure superuser access
-				Become a superuser							sudo su - / sudo -i
-				Editing the sudoers file 					visudo 
-				Adding user to the wheel group 				usermod -aG wheel user_name
+    Configure superuser access
+                Become a superuser                          sudo su - / sudo -i
+                Editing the sudoers file                    visudo
+                Adding user to the wheel group              usermod -aG wheel user_name
 
 --------------------------------------------------------------------------------------------------------------
 Manage security
-	Configure firewall settings using firewall-cmd/firewalld
-				Get active zone 					firewall-cmd --get-active-zone
-				Get default zone 					firewall-cmd --get-default-zone
-				Display info about zone 			firewall-cmd --list-all --zone=public
-				Add/remove service from zone 		firewall-cmd --add/remove-service=nfs --pernament
-				Apply change/reload 				firewall-cmd --reload
-				Change active zone 					firewall-cmd --change-interface=*inteface_name* --zone=home
-				Change default zone 				firewall-cmd --set-default-zone=home
-				Activate/disable the panic mode 	firewall-cmd --panic-on/off
-				Configure a drop zone 				firewall-cmd --zone=drop --add-source=*IP_adress/Mask* 
+    Configure firewall settings using firewall-cmd/firewalld
+                Get active zone                     firewall-cmd --get-active-zone
+                Get default zone                    firewall-cmd --get-default-zone
+                Display info about zone             firewall-cmd --list-all --zone=public
+                Add/remove service from zone        firewall-cmd --add/remove-service=nfs --pernament
+                Apply change/reload                 firewall-cmd --reload
+                Change active zone                  firewall-cmd --change-interface=*inteface_name* --zone=home
+                Change default zone                 firewall-cmd --set-default-zone=home
+                Activate/disable the panic mode     firewall-cmd --panic-on/off
+                Configure a drop zone               firewall-cmd --zone=drop --add-source=*IP_adress/Mask*
 
-	Create and use file access control lists
-				Set an ACL on a file 				setfacl [option] [action/specification] file
-													setfacl -d -m Filip :rwx Garage
-				Display ACL info of the file 		getfacl r2d2_garage
+    Create and use file access control lists
+                Set an ACL on a file                setfacl [option] [action/specification] file
+                                                    setfacl -d -m Filip :rwx Garage
+                Display ACL info of the file        getfacl r2d2_garage
 
-	Configure key-based authentication for SSH
-				Create SSH keys 					ssh-keygen
-				Copy SSH keys do another server 	ssh-copy-id username@server_name
+    Configure key-based authentication for SSH
+                Create SSH keys                     ssh-keygen
+                Copy SSH keys do another server     ssh-copy-id username@server_name
 
-				Manually copy SSH keys 				cat ~/.ssh/id_rsa.pub | ssh username@remote_host "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
-	
-	Set enforcing and permissive modes for SELinux
-				#SELinux modes: Disabled ()   
-								permissive (0)	- uses logs, but doesn't deny operations 
-								enforcing (1)	- uses logs and deny operations 
+                Manually copy SSH keys              cat ~/.ssh/id_rsa.pub | ssh username@remote_host "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
 
-				Display currently active SELinux mode 		getenforce
-				Display more info about SELinux 			sestatus
-				Change mode 								setenforce 0
-				Pernamently disable SELinux 				vi /etc/sysconfig/selinux
-		
-	List and identify SELinux file and process context
-				List SELinux context 						ls -Z /filename
-				Display SELinux processes 					semanage fcontext -l | grep httpd
-				Display SELinux running processes 			ps auxZ
+    Set enforcing and permissive modes for SELinux
+                #SELinux modes: Disabled ()
+                                permissive (0)  - uses logs, but doesn't deny operations
+                                enforcing (1)   - uses logs and deny operations
 
-	Restore default file contexts
-				Restore default SELinux context 			restorecon -R -v /test/
-				#using /.autorelabel will prompt SELinux to relabel every file on filesystem reboot
+                Display currently active SELinux mode       getenforce
+                Display more info about SELinux             sestatus
+                Change mode                                 setenforce 0
+                Pernamently disable SELinux                 vi /etc/sysconfig/selinux
 
-	Use boolean settings to modify system SELinux settings
-				List all boolean options with description	semanage boolean -l
-				Check status of boolean option 				getsebool httpd_can_network_connect_db
-				Start/stop the boolean option 				setsebool httpd_can_network_connect_db on/off
+    List and identify SELinux file and process context
+                List SELinux context                        ls -Z /filename
+                Display SELinux processes                   semanage fcontext -l | grep httpd
+                Display SELinux running processes           ps auxZ
+
+    Restore default file contexts
+                Restore default SELinux context             restorecon -R -v /test/
+                #using /.autorelabel will prompt SELinux to relabel every file on filesystem reboot
+
+    Use boolean settings to modify system SELinux settings
+                List all boolean options with description   semanage boolean -l
+                Check status of boolean option              getsebool httpd_can_network_connect_db
+                Start/stop the boolean option               setsebool httpd_can_network_connect_db on/off
 
 
-	Diagnose and address routine SELinux policy violations
-				Usefull logs viewing methods 				auserach -m AVC,USER_AVC,SELINUX_ERR
-															audit2why -a
+    Diagnose and address routine SELinux policy violations
+                Usefull logs viewing methods                auserach -m AVC,USER_AVC,SELINUX_ERR
+                                                            audit2why -a
 
 --------------------------------------------------------------------------------------------------------------
 Manage containers
-	Find and retrieve container images from a remote registry
-				Search for a specific container 			podman search ubi | less
-				Download a container 						podman pull registry-access.redhat.com/ubi8
-	
-
-	Inspect container images
-				Inspect the container 						skopeo inspect docker://image_name | less
-
-	Perform container management using commands such as podman and skopeo
-				Run a container 							podman run -d registry-access.redhat.com/ubi8
-				Inspect the container 						skopeo inspect docker://registry-access.redhat.com/ubi8 | less 
+    Find and retrieve container images from a remote registry
+                Search for a specific container             podman search ubi | less
+                Download a container                        podman pull registry-access.redhat.com/ubi8
 
 
-	Perform basic container management such as running, starting, stopping, and listing running containers
-				Run a container 							podman run -d --name httpd_test registry.access.redhat.com/rhscl/httpd-24-rhel
+    Inspect container images
+                Inspect the container                       skopeo inspect docker://image_name | less
 
-				Stop a container 							podman stop httpd_test
-				List running containers 					podman ps
-				List all the containers 					podman ps -a
-				Inspect the running container 				podman inspect -l 
-
-
-	Run a service inside a container
-				Pull apache 							podman pull registry.access.redhat.com/rhscl/httpd-24-rhel7
-				Run an apache 							podman run --name httpd_server -dit -p 7000:8080 registry.access.redhat.com/rhscl/httpd-24-rhel
+    Perform container management using commands such as podman and skopeo
+                Run a container                             podman run -d registry-access.redhat.com/ubi8
+                Inspect the container                       skopeo inspect docker://registry-access.redhat.com/ubi8 | less
 
 
-	Configure a container to start automatically as a systemd service
-				Create service 							podman generate systemd httpd_server2 > /etc/systemd/system/httpd.service
+    Perform basic container management such as running, starting, stopping, and listing running containers
+                Run a container                             podman run -d --name httpd_test registry.access.redhat.com/rhscl/httpd-24-rhel
 
-				Enable the new service 					systemctl enable httpd.service --now
+                Stop a container                            podman stop httpd_test
+                List running containers                     podman ps
+                List all the containers                     podman ps -a
+                Inspect the running container               podman inspect -l
 
-	Attach persistent storage to a container
-				Attach external storage 				 podman run --name httpd_server -dit -p 7002:8080 -v ~/httpd:/var/www/html:z registry.access.redhat.com/rhscl/httpd-24-rhel 
+
+    Run a service inside a container
+                Pull apache                             podman pull registry.access.redhat.com/rhscl/httpd-24-rhel7
+                Run an apache                           podman run --name httpd_server -dit -p 7000:8080 registry.access.redhat.com/rhscl/httpd-24-rhel
+
+
+    Configure a container to start automatically as a systemd service
+                Create service                          podman generate systemd httpd_server2 > /etc/systemd/system/httpd.service
+
+                Enable the new service                  systemctl enable httpd.service --now
+
+    Attach persistent storage to a container
+                Attach external storage                  podman run --name httpd_server -dit -p 7002:8080 -v ~/httpd:/var/www/html:z registry.access.redhat.com/rhscl/httpd-24-rhel
