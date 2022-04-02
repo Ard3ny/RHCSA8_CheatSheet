@@ -444,6 +444,7 @@ Deploy, configure, and maintain systems
 
 
     Modify the system bootloader
+                List all kerenels                   grubby --info=ALL | grep kernel
                 Display default kernel version      grubby --default-kernel
                 Display information about kernel    grubby --info=DEFAULT
                 Change the default kernel           grubby --set-default-index=1
